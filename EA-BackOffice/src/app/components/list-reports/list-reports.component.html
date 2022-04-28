@@ -1,0 +1,37 @@
+
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col">
+              <div class="card">
+                  <div class="card-body text-center">
+                      <span class="title">REPORT LIST</span>
+                      <button class="btn btn-success float-end" routerLink="/create-report">NEW REPORT</button> 
+                      <table *ngIf="listReports.length > 0" class="table table-striped mt-3">
+                       <thead>
+                         <tr>
+                           <th scope="col">ID</th>
+                           <th scope="col">User Reporting</th>
+                           <th scope="col">Description</th>
+                           <th scope="col">Code</th>
+                           <th scope="col">Options</th>
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr *ngFor="let report of listReports">
+                           <td>{{ report._id }}</td>
+                           <td>{{ report.reportingUser.username }}</td>
+                           <td>{{ report.description }}</td>
+                           <td>{{ report.code}}</td>
+                           <td>
+                               <i (click)="deleteReport(report._id!)" class="fa-solid fa-trash text-danger"></i>
+                           </td>
+                         </tr>
+                       </tbody>
+                     </table>
+                     <h5 style="text-align: start; margin-top: 10px;" *ngIf="listReports.length == 0">There are no reports in the database</h5>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+   </div>

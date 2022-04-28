@@ -1,0 +1,43 @@
+
+<div class="container mt-5">
+    <div class="class row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title"> {{ title | uppercase }} </span>
+                    <form class="mt-3" [formGroup]="reportForm" (ngSubmit)="addReport()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="reportingUser" 
+                                class="form-control form-control-lg" placeholder="Reporting User">
+                            <div class="text-danger"
+                                *ngIf="reportForm.get('reportingUser')?.hasError('required') && reportForm.get('reportingUser')?.touched">
+                                <span>Reporting User is required</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="description" 
+                                class="form-control form-control-lg" placeholder="Description">
+                            <div class="text-danger"
+                                *ngIf="reportForm.get('description')?.hasError('required') && reportForm.get('description')?.touched">
+                                <span>Description is required</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="code" 
+                                class="form-control form-control-lg" placeholder="code">
+                            <div class="text-danger"
+                                *ngIf="reportForm.get('code')?.hasError('required') && reportForm.get('code')?.touched">
+                                <span>Code is required</span>
+                            </div>
+                        </div>
+                    
+                        <div class="mb-3">
+                            <button type="submit" id="myBtn" [disabled]="reportForm.invalid" class="btn btn-success btn-lg float-end">SUBMIT</button>
+                            <button routerLink="/list-reports" class="btn btn-secondary btn-lg float-start">BACK</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
